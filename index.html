@@ -57,7 +57,7 @@
         alert("Please select a face first.");
         return;
       }
-
+      cube.moveHistory.push({ face: selectedFace, direction });
       cube.rotateFace(selectedFace, direction);
       cube.show(`Manual Rotate: ${selectedFace}-${direction}`);
       selectedFace = null; // reset after use

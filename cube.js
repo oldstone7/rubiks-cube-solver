@@ -8,6 +8,7 @@ class Cube {
   L: Array(9).fill('o'),
   R: Array(9).fill('r')
   };
+  this.moveHistory = [];
   }
   
   rotateFace(face, direction) {
@@ -104,7 +105,6 @@ class Cube {
   scramble() {
     const faces = ['U', 'D', 'F', 'B', 'L', 'R'];
     const directions = ['clockwise', 'counter-clockwise'];
-    this.moveHistory = []; // reset history
     const divider = document.createElement('div');
     divider.innerHTML = `<h2>Scramble Steps:</h2>`;
     document.getElementById('cube-visual').appendChild(divider);
@@ -120,7 +120,7 @@ class Cube {
 
 solve() {
     if (!this.moveHistory || this.moveHistory.length === 0) {
-        alert("Nothing to solve. Scramble first!");
+        alert("Nothing to solve. Scramble first or make some moves!");
         return;
     }
 
@@ -130,19 +130,21 @@ solve() {
     };
 
     let step = 1;
-    
+
     const divider = document.createElement('div');
     divider.innerHTML = `<h2>Solve Steps:</h2>`;
     document.getElementById('cube-visual').appendChild(divider);
 
-    // Reverse the moves in reverse order
     for (let i = this.moveHistory.length - 1; i >= 0; i--) {
         const { face, direction } = this.moveHistory[i];
         const reverse = reverseDir[direction];
         this.rotateFace(face, reverse);
         this.show(`Solve step ${step++}: ${face} ${reverse}`);
     }
+
+    this.moveHistory = []; // ✅ Optional: clear after solving
 }
+
 
   show(label) {
       const el = document.createElement('div');
