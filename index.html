@@ -38,32 +38,37 @@
     // Global cube instance
     const cube = new Cube();
     cube.show("Initial");
-
-    // Optional: Rotate Front Button
-    function rotateF() {
-      cube.rotateFace("F", "clockwise");
-      cube.show("Rotated Front Face");
-    }
-    
+  
     let selectedFace = null;
-
+  
+    // Get references to direction buttons
+    const dirButtons = document.querySelectorAll('#direction-buttons button');
+  
+    // Disable direction buttons initially
+    dirButtons.forEach(btn => btn.disabled = true);
+  
     function selectFace(face) {
       selectedFace = face;
-      alert(`Selected face: ${face}. Now choose direction.`);
+  
+      // Enable direction buttons once face is selected
+      dirButtons.forEach(btn => btn.disabled = false);
     }
-
+  
     function rotateSelected(direction) {
-      if (!selectedFace) {
-        alert("Please select a face first.");
-        return;
-      }
+      if (!selectedFace) return;
+  
       cube.moveHistory.push({ face: selectedFace, direction });
       cube.rotateFace(selectedFace, direction);
       cube.show(`Manual Rotate: ${selectedFace}-${direction}`);
-      selectedFace = null; // reset after use
+  
+      // Reset
+      selectedFace = null;
+  
+      // Disable direction buttons again
+      dirButtons.forEach(btn => btn.disabled = true);
     }
-
   </script>
+  
 
 </body>
 </html>
