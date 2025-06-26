@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rubik's Cube Game</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <h1>Rubik's Cube</h1>
+  <div id="cube-visual"></div>
+
+  <!-- Controls -->
+  <div id="controls">
+    <div id="manual-controls">
+      <p>Manual Rotate:</p>
+      <div id="face-buttons">
+        <button onclick="selectFace('U')">Up</button>
+        <button onclick="selectFace('D')">Down</button>
+        <button onclick="selectFace('F')">Front</button>
+        <button onclick="selectFace('B')">Back</button>
+        <button onclick="selectFace('L')">Left</button>
+        <button onclick="selectFace('R')">Right</button>
+      </div>
+      <div id="direction-buttons">
+        <button onclick="rotateSelected('clockwise')">Clockwise ⟳</button>
+        <button onclick="rotateSelected('counter-clockwise')">Counter-clockwise ⟲</button>
+      </div>
+    </div>    
+    <button onclick="cube.scramble()">Scramble</button>
+    <button onclick="cube.solve()">Solve</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="cube.js"></script>
+  <script src="svgRenderer.js"></script>
+
+  <script>
+    // Global cube instance
+    const cube = new Cube();
+    cube.show("Initial");
+
+    // Optional: Rotate Front Button
+    function rotateF() {
+      cube.rotateFace("F", "clockwise");
+      cube.show("Rotated Front Face");
+    }
+    
+    let selectedFace = null;
+
+    function selectFace(face) {
+      selectedFace = face;
+      alert(`Selected face: ${face}. Now choose direction.`);
+    }
+
+    function rotateSelected(direction) {
+      if (!selectedFace) {
+        alert("Please select a face first.");
+        return;
+      }
+
+      cube.rotateFace(selectedFace, direction);
+      cube.show(`Manual Rotate: ${selectedFace}-${direction}`);
+      selectedFace = null; // reset after use
+    }
+
+  </script>
+
+</body>
+</html>

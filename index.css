@@ -1,0 +1,52 @@
+#cube-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .cube-step {
+    border: 2px solid #ccc;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .face-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+  }
+  
+  .face-block {
+    text-align: center;
+  }
+  
+  .sticker {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    margin: 1px;
+  }
+  #controls {
+    margin-top: 20px;
+  }
+  button {
+    margin-right: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  #manual-controls {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px dashed #888;
+  }
+  
+  #face-buttons button,
+  #direction-buttons button {
+    margin: 4px;
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
