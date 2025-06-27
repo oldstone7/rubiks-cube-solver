@@ -14,7 +14,9 @@ rubiks-cube/
 ├── index.css           # Styles for cube layout and controls
 ├── cube.js             # Core cube logic (OOP class for Cube)
 ├── svgRenderer.js      # Generates colored HTML representation of the cube
+├── Rubiks cube plan.pdf # This app's logic planning written roughly
 └── README.md           # Project documentation
+
 ```
 
 ---
@@ -97,6 +99,8 @@ rubiks-cube/
 ---
 
 ## 📆 Final Notes
+
+- To see the planning behind this app's programming as to how Rotations, Cubeviiew, Scramble, Solve are planned to implement, look here [Rubik's Cube Planning Notes (PDF)](Rubiks%20cube%20plan.pdf)
 
 > This project was built under **tight time pressure** and focuses on demonstrating logic, code structure, and problem solving — not UI polish.
 
